@@ -3,8 +3,8 @@ import { groundTexture } from '../images/textures.js'
 
 export function Ground() {
   const [ref] = usePlane(() => ({
-    rotation: [ -Math.PI, 0, 0],
-    position: [ 0, -0.5, 0],
+    rotation: [ -Math.PI/2, 0, 0], // x, y, z
+    position: [ 0, -0.5, 0], // x, y, z
   }));
 
   groundTexture.repeat.set(100, 100);
