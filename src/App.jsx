@@ -2,21 +2,26 @@ import { Canvas } from '@react-three/fiber'
 import { Sky } from '@react-three/drei'
 import { Physics } from '@react-three/cannon'
 import { Ground } from './components/Ground'
-import { FPV } from './components/FPV'
+import { FPV as Fpv } from './components/FPV'
 import { Player } from './components/Player.jsx'
+import { Cubes } from './components/Cubes.jsx'
 
-function App() {
-
+const App = () => {
   return (
+    <>
       <Canvas>
-        <Sky sunPosition={[10, 10, 20]}/>
-        <ambientLight intensity={0.5} />
-        <FPV />
+        <Sky sunPosition={[80, 0, 0]} />
+        <ambientLight intensity={1} />
+        <Fpv />
         <Physics>
+          <Cubes />
           <Player />
           <Ground />
         </Physics>
       </Canvas>
+      <div className='pointer'>+</div>
+
+    </>
   )
 }
 

@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react'
 
 const ACTIONS_KEYBOARD_MAP = {
-  'KeyW': 'moveForward',
-  'KeyS': 'moveBackward',
-  'KeyA': 'moveLeft',
-  'KeyD': 'moveRight',
-  'Space': 'jump',
-  'Digit1': 'dirt',
-  'Digit2': 'grass',
-  'Digit3': 'glass',
-  'Digit4': 'wood',
-  'Digit5': 'log',
+  KeyW: 'moveForward',
+  KeyS: 'moveBackward',
+  KeyA: 'moveLeft',
+  KeyD: 'moveRight',
+  Space: 'jump',
+  Digit1: 'dirt',
+  Digit2: 'grass',
+  Digit3: 'glass',
+  Digit4: 'wood',
+  Digit5: 'log'
 }
 export const useKeyboard = () => {
   const [actions, setActions] = useState({
@@ -24,11 +24,11 @@ export const useKeyboard = () => {
     glass: false,
     log: false,
     wood: false
-  });
+  })
 
   useEffect(() => {
     const handleKeyDown = event => {
-      const { code } = event;
+      const { code } = event
       const action = ACTIONS_KEYBOARD_MAP[code]
       if (action) {
         setActions(prevActions => ({
@@ -39,7 +39,7 @@ export const useKeyboard = () => {
     }
 
     const handleKeyUp = event => {
-      const { code } = event;
+      const { code } = event
       const action = ACTIONS_KEYBOARD_MAP[code]
       if (action) {
         setActions(prevActions => ({
@@ -48,13 +48,12 @@ export const useKeyboard = () => {
         }))
       }
     }
-    document.addEventListener('keydown', handleKeyDown);
-    document.addEventListener('keyup', handleKeyUp);
+    document.addEventListener('keydown', handleKeyDown)
+    document.addEventListener('keyup', handleKeyUp)
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.removeEventListener('keyup', handleKeyUp);
-
+      document.removeEventListener('keydown', handleKeyDown)
+      document.removeEventListener('keyup', handleKeyUp)
     }
   }, [])
   return actions
